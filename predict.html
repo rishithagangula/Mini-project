@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/961c028791.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="second_main">
+        <div class="main_1">
+            <div>
+                <h4 class="m-2 head1">Air Quality Analysis</h4>
+            </div>
+            <div class="m-2">
+                <button class="style_but2 mr-3"><a href="{{url_for('home')}}">HOME</a></button>
+                <button class="style_but2"><a href="{{url_for('predict')}}">PREDICT</a></button>
+            </div>
+        </div>
+        <div class="next_main">
+            <p class="para">Enter the values values between 0 to 2500</p>
+            <form method="POST" action="{{ url_for('predict') }}">
+                <label>Enter the AQI value:</label>
+                <input type="number" name="aqiInput" required>
+                <br>
+                <button class="style_but mt-3" type="submit">Predict</button>
+            </form>
+            
+            <!-- Display predictions here -->
+<div class="predictions">
+    <h1>Predictions</h1>
+    
+    <p>AQI value: {{ model1_info['Prediction'] }}</p>
+    <p>Air Quality Class: {{ model1_info['Air Quality Class'] }}</p>
+    <p>Symptoms: {{ model1_info['Symptoms'] }}</p>
+    <p>Diseases: {{ model1_info['Diseases'] }}</p>
+    <p>Precautions: {{ model1_info['Precautions'] }}</p>
+</div>
+   
+        </div>
+    </div>
+</body>
+</html>
